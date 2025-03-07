@@ -1,6 +1,6 @@
-Client Script
+//Client Script
 
-Country phone code Adjust when Select Country(Dropdown). onChange (means User Input).
+//Country phone code Adjust when Select Country(Dropdown). onChange (means User Input).
 
 function updatePhonePrefix() {
     var country = ZDK.Page.getField('Lead_Country').getValue();
@@ -35,11 +35,10 @@ function updatePhonePrefix() {
     }
 }
 updatePhonePrefix();
+--------------------------------------------------------------------------------
 
 
-
-
-Set Field Mandatory by Client Script ZOHO CRM
+//Set Field Mandatory by Client Script ZOHO CRM
 PG
  Piyush Goyal
 Discussion
@@ -52,7 +51,7 @@ var field_obj = ZDK.Page.getField('Custom_Field1');
 field_obj.setMandatory(true);
 Custom_Field1 = Field API Name
 
-Apart from is if you have required any kind of Zoho work please do comment.
+//Apart from is if you have required any kind of Zoho work please do comment.
 —-----------------------------------------------
 
 
@@ -69,7 +68,7 @@ field_obj.setVisibility(true);
 
 —--------------------------------------------------------------------------------------------------------------------
 
-Update Phone number code After Save the form
+//Update Phone number code After Save the form
 
 
 function updatePhonePrefixOnSave() {

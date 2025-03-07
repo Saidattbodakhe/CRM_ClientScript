@@ -1,0 +1,110 @@
+Client Script
+
+Country phone code Adjust when Select Country(Dropdown). onChange (means User Input).
+
+function updatePhonePrefix() {
+    var country = ZDK.Page.getField('Lead_Country').getValue();
+    var phoneField = ZDK.Page.getField('Phone');
+
+
+    // Define country code mappings
+    var countryCodes = {
+        "India": "+91",
+        "United States": "+1",
+        "United Kingdom": "+44",
+        "Canada": "+1",
+        "Australia": "+61"
+        // Add more country codes as needed
+    };
+
+
+    // Get the current phone number value
+    var currentValue = phoneField.getValue() || "";
+
+
+    // Check if a valid country is selected and if the phone number isn't empty
+    if (countryCodes[country] && currentValue) {
+        var formattedNumber = currentValue;
+
+
+        // Remove any existing country codes (if user changes country)
+        formattedNumber = formattedNumber.replace(/^\+\d+/, "");
+       
+        // Append the correct country code
+        phoneField.setValue(countryCodes[country] + formattedNumber);
+    }
+}
+updatePhonePrefix();
+
+
+
+
+Set Field Mandatory by Client Script ZOHO CRM
+PG
+ Piyush Goyal
+Discussion
+2 years ago
+#Tips of the day
+
+We can set the field as mandatory by the client script
+
+var field_obj = ZDK.Page.getField('Custom_Field1');
+field_obj.setMandatory(true);
+Custom_Field1 = Field API Name
+
+Apart from is if you have required any kind of Zoho work please do comment.
+—-----------------------------------------------
+
+
+var stage_field = ZDK.Page.getField('Stage').getValue();
+log(stage_field);
+var field_obj = ZDK.Page.getField('Expected_Revenue');
+if (stage_field == 'Needs Analysis') {
+    field_obj.setVisibility(false);
+}
+else
+{ 
+field_obj.setVisibility(true);
+}
+
+—--------------------------------------------------------------------------------------------------------------------
+
+Update Phone number code After Save the form
+
+
+function updatePhonePrefixOnSave() {
+    var country = ZDK.Page.getField('Lead_Country').getValue();
+    var phoneField = ZDK.Page.getField('Phone');
+
+
+    // Define country code mappings
+    var countryCodes = {
+        "India": "+91",
+        "United States": "+1",
+        "United Kingdom": "+44",
+        "Canada": "+1",
+        "Australia": "+61"
+        // Add more country codes as needed
+    };
+
+
+    // Get the current phone number value
+    var currentValue = phoneField.getValue() || "";
+
+
+    // Check if a valid country is selected and if the phone number isn't empty
+    if (countryCodes[country] && currentValue) {
+        var formattedNumber = currentValue;
+
+
+        // Remove any existing country codes before adding a new one
+        formattedNumber = formattedNumber.replace(/^\+\d+/, "");
+       
+        // Append the correct country code
+        phoneField.setValue(countryCodes[country] + formattedNumber);
+    }
+}
+updatePhonePrefixOnSave();
+// Attach the function to the onSave event
+// ZDK.Page.onSave(updatePhonePrefixOnSave);
+
